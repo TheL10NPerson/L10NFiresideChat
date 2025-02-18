@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localization Fireside Chat - Guest Intake Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 60px;
+            margin-right: 15px;
+        }
+        h2 {
+            color: #d9534f;
+            font-size: 22px;
+            margin: 0;
+        }
+        label {
+            font-weight: bold;
+            text-align: left;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #d9534f;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://photos.app.goo.gl/vpRfxX5stGBAqwtZ9" alt="Localization Fireside Chat Logo" class="logo">
+            <h2>Localization Fireside Chat - Guest Intake Form</h2>
+        </div>
+        <form id="guestForm">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="linkedin">LinkedIn Profile</label>
+            <input type="url" id="linkedin" name="linkedin">
+
+            <label for="twitter">X (Twitter) Profile</label>
+            <input type="url" id="twitter" name="twitter">
+
+            <label for="facebook">Facebook Profile</label>
+            <input type="url" id="facebook" name="facebook">
+
+            <label for="instagram">Instagram Profile</label>
+            <input type="url" id="instagram" name="instagram">
+
+            <label for="bio">Executive Bio (Paste or Upload Below)</label>
+            <textarea id="bio" name="bio" rows="4"></textarea>
+
+            <label for="bioFile">Upload Bio (PDF/DOCX)</label>
+            <input type="file" id="bioFile" name="bioFile" accept=".pdf,.doc,.docx">
+
+            <label for="headshot">Upload Headshot (JPG/PNG)</label>
+            <input type="file" id="headshot" name="headshot" accept="image/png, image/jpeg">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('guestForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            let emailBody = "Guest Intake Form Submission:\n\n";
+            formData.forEach((value, key) => {
+                emailBody += `${key}: ${value}\n`;
+            });
+            
+            window.location.href = `mailto:L10Nfiresidechat@gmail.com?subject=Guest Intake Submission&body=${encodeURIComponent(emailBody)}`;
+        });
+    </script>
+</body>
+</html>
