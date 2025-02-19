@@ -76,7 +76,12 @@
             <img src="https://raw.githubusercontent.com/TheL10NPerson/L10NFiresideChat/main/LFC%20Circle.png" alt="Localization Fireside Chat Logo" class="logo">
             <h2>Localization Fireside Chat - Guest Intake Form</h2>
         </div>
-        <form id="guestForm">
+        <form action="https://formsubmit.co/L10Nfiresidechat@gmail.com" method="POST" enctype="multipart/form-data">
+            <!-- Hidden fields -->
+            <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- Form fields -->
             <label for="firstName">First Name *</label>
             <input type="text" id="firstName" name="firstName" required>
 
@@ -110,20 +115,5 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById('guestForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(this);
-            
-            let emailBody = "Guest Intake Form Submission:\n\n";
-            formData.forEach((value, key) => {
-                emailBody += `${key}: ${value}\n`;
-            });
-            
-            window.location.href = `mailto:L10Nfiresidechat@gmail.com?subject=Guest Intake Submission&body=${encodeURIComponent(emailBody)}`;
-        });
-    </script>
 </body>
 </html>
